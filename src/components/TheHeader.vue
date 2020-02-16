@@ -5,13 +5,13 @@
 </template>
 
 <style lang="stylus" scoped>
-    height = 50px
+height = 50px
 
-    .header
-        width 100vw
-        height height
-        line-height height
-        background-color #fff
-        border-bottom 2px solid #e4e8f0
-        text-align center
+.header
+    width 100vw
+    height height
+    line-height height
+    background-color #fff
+    border-bottom 2px solid #e4e8f0
+    text-align center
 </style>
