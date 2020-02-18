@@ -10,6 +10,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 import HomeTransactionListItem from './HomeTransactionListItem'
+
 const { mapState, mapActions } = createNamespacedHelpers('transactions')
 
 export default {
@@ -31,7 +32,6 @@ export default {
 
 <style lang="stylus" scoped>
 .home-transaction-list
-    width 96%
     background-color #fff
     border 1px solid #e6e6e6
     border-radius 4px

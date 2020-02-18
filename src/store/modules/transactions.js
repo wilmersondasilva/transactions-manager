@@ -10,14 +10,16 @@ const state = {
 
 const getters = {
     totalBalance(state) {
-        return state.transactions.reduce((total, transaction) => total + transaction.quantity, 0)
+        return state.transactions.reduce((total, transaction) =>
+			transaction.type === state.transactionTypes.ADD ? total + transaction.amount : total - transaction.amount
+		, 0)
     }
 }
 
 const actions = {
     fetchAllTransactions({ commit }) {
         const response = transactionService.getAll()
-		const transactions = [...response].map(transaction => ({ ...transaction, quantity: 0 }))
+		const transactions = [...response]
 		commit('setTransactions', transactions)
     }
 }
