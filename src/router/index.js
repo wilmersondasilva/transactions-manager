@@ -7,6 +7,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: () => import('@/pages/home/Home.vue')
+  },
+  {
+    path: '/transaction/new',
+    name: 'Form',
+    component: () => import('@/pages/form/Form.vue')
   }
 ]
 
