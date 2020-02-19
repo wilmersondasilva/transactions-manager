@@ -35,7 +35,7 @@ const actions = {
 		commit('setTransactions', transactions)
 	},
 	saveTransaction({ commit, dispatch, state, getters }) {
-		const data = Object.assign({}, state.form, { amount: getters.formAmountValue })
+		const data = Object.assign({}, state.form, { amount: getters.formAmountValue, createdAt: new Date() })
 		transactionService.save(data)
 		commit('resetForm')
 		dispatch('fetchAllTransactions')

@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1>Transactions Manager</h1>
+        <h1>Gerenciador de Transações</h1>
     </header>
 </template>
 
