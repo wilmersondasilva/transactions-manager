@@ -1,11 +1,11 @@
 <template>
     <div class="form">
-        <h2 class="title">Nova transação    </h2>
+        <h2 class="title">Nova transação</h2>
         <form @submit.prevent="save">
             <div class="form-group transaction-type">
                 <label for="type">Tipo de transação</label>
                 <div class="input-group">
-                    <select v-model="form.type" id="type" required>
+                    <select v-model="form.type" id="type" data-type required>
                         <option v-for="type in transactionTypes" :key="type" :value="type">{{ type }}</option>
                     </select>
                 </div>
@@ -13,13 +13,13 @@
             <div class="form-group-inline">
                 <div class="form-group">
                     <label for="card-description">Descrição</label>
-                    <input type="text" v-model.trim="form.description" :class="{ invalid: errors.description.isInvalid }" id="card-description"/>
-                    <p v-if="errors.description.isInvalid" class="error-message">{{ errors.description.message }}</p>
+                    <input type="text" v-model.trim="form.description" :class="{ invalid: errors.description.isInvalid }" data-description id="card-description"/>
+                    <p v-if="errors.description.isInvalid" class="error-message" data-description-error>{{ errors.description.message }}</p>
                 </div>
                 <div class="form-group amount">
                     <label for="card-amount">Valor</label>
-                    <input v-money="moneyInputConfig" v-model="form.amount" :class="{ invalid: errors.amount.isInvalid }" id="card-amount"/>
-                    <p v-if="errors.amount.isInvalid" class="error-message">{{ errors.amount.message }}</p>
+                    <input v-money="moneyInputConfig" v-model="form.amount" :class="{ invalid: errors.amount.isInvalid }" data-amount id="card-amount"/>
+                    <p v-if="errors.amount.isInvalid" class="error-message" data-amount-error>{{ errors.amount.message }}</p>
                 </div>
             </div>
             <div class="button-container">
