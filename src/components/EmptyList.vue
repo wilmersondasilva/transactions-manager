@@ -1,8 +1,17 @@
 <template>
     <div class="empty-list">
-        <p>Ainda não existem transações cadastradas</p>
+        <p>{{ text }}</p>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'EmptyList',
+    props: {
+        text: String
+    }
+}
+</script>
 
 <style lang="stylus" scoped>
     .empty-list

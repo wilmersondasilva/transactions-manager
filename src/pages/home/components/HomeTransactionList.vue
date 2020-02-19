@@ -1,7 +1,7 @@
 <template>
     <div class="home-transaction-list">
         <h2 class="title">Transações</h2>
-        <home-empty-list v-if="isListEmpty" />
+        <empty-list v-if="isListEmpty" text="Ainda não existem transações cadastradas"/>
         <div v-else class="transaction-list-container">
             <home-transaction-list-item class="transaction-item" v-for="transaction in transactions" :key="transaction.id" :transaction="transaction" />
         </div>
@@ -11,7 +11,7 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 import HomeTransactionListItem from './HomeTransactionListItem'
-import HomeEmptyList from './HomeEmptyList'
+import EmptyList from '@/components/EmptyList'
 
 const { mapState, mapActions } = createNamespacedHelpers('transactions')
 
@@ -19,7 +19,7 @@ export default {
     name: 'HomeTransactionList',
     components: {
         HomeTransactionListItem,
-        HomeEmptyList
+        EmptyList
     },
     computed: {
         ...mapState(['transactions']),
