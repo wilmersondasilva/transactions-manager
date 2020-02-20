@@ -6,21 +6,30 @@
                 <label for="type">Tipo de transação</label>
                 <div class="input-group">
                     <select v-model="form.type" id="type" data-type required>
-                        <option v-for="type in transactionTypes" :key="type" :value="type">{{ type }}</option>
+                        <option v-for="type in transactionTypes" :key="type" :value="type">{{ type | capitalize }}</option>
                     </select>
                 </div>
+            </div>        
+            <div class="form-group">
+                <label for="card-description">Descrição</label>
+                <input 
+                    type="text"
+                    v-model.trim="form.description"
+                    :class="{ invalid: errors.description.isInvalid }"
+                    data-description
+                    id="card-description"
+                />
+                <p v-if="errors.description.isInvalid" class="error-message" data-description-error>{{ errors.description.message }}</p>
             </div>
-            <div class="form-group-inline">
-                <div class="form-group">
-                    <label for="card-description">Descrição</label>
-                    <input type="text" v-model.trim="form.description" :class="{ invalid: errors.description.isInvalid }" data-description id="card-description"/>
-                    <p v-if="errors.description.isInvalid" class="error-message" data-description-error>{{ errors.description.message }}</p>
-                </div>
-                <div class="form-group amount">
-                    <label for="card-amount">Valor</label>
-                    <input v-money="moneyInputConfig" v-model="form.amount" :class="{ invalid: errors.amount.isInvalid }" data-amount id="card-amount"/>
-                    <p v-if="errors.amount.isInvalid" class="error-message" data-amount-error>{{ errors.amount.message }}</p>
-                </div>
+            <div class="form-group amount">
+                <label for="card-amount">Valor</label>
+                <input
+                    v-money="moneyInputConfig"
+                    v-model="form.amount"
+                    :class="{ invalid: errors.amount.isInvalid }"
+                    data-amount
+                    id="card-amount"/>
+                <p v-if="errors.amount.isInvalid" class="error-message" data-amount-error>{{ errors.amount.message }}</p>
             </div>
             <div class="button-container">
                 <button type="submit" class="submit-button">Salvar</button>
@@ -98,36 +107,38 @@ export default {
 
 <style lang="stylus" scoped>
 .form
-    width 80%
+    max-width 407px
+    width 95%
     margin auto
-    margin-top 16px
-    border 1px solid #e6e6e6
-    border-radius 4px
+    margin-top 40px
+    background-color #fff
+    padding 18px 28px 22px
+    box-sizing border-box
 
 .title
     text-align left
-    padding 12px 20px
-    border-bottom 1px solid #e6e6e6
-
-form
-    padding 20px
+    font-weight bold
+    font-size 19px
+    padding-bottom 8px
 
 .form-group
     width 100%
     text-align left
-    margin-bottom 20px
+    margin-top 22px
 
     label
+        font-size 16px
         display block
-        margin 10px 0    
+        margin 10px 0   
 
-    input, select 
+    input, select
         width 100%
-        height 40px
-        border 2px solid #eee
-        border-radius 4px
+        height 45px
+        border 1px solid #d8d8d8
+        border-radius 2px
         background-color #fff
         padding 1px 5px
+        font-size 16px
         box-sizing border-box
 
         &:focus
@@ -137,13 +148,12 @@ form
             border-color #d62727
 
     &.amount
-        width 40%
+        width 50%
 
 .error-message
-    font-size 12px
+    font-size 14px
     margin-top 6px
     color #d62727
-
 
 .transaction-type
     .type
@@ -160,28 +170,20 @@ form
         margin-left 10px
 
 .button-container
-    margin-top 12px
+    margin-top 30px
 
-.submit-button
-    width 100%
-    height 50px
-    border-radius 4px
-    border 2px solid #eee
-    background-color #edeef2
-    font-size 1rem
+    .submit-button
+        width 100%
+        height 50px
+        color #fff
+        background-color #59B1F5
+        font-size 15px
+        border-radius 2px
 
-    &:focus
-        outline 0
-
-@media screen and (min-width: 650px)
-    .form
-        width 60%
-
-@media screen and (min-width: 900px)
-    .form
-        width 50%
+        &:focus
+            outline 0
 
 @media screen and (min-width: 1200px)
     .form
-        width 30%
+        margin-top 200px
 </style>

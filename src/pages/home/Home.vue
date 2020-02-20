@@ -25,17 +25,27 @@ export default {
 
 <style lang="stylus" scoped>
     .home
-        width 96%
-        max-width 850px
+        max-width 950px
         margin auto
+        background-color #fff
+        padding 26px 33px 45px
 
         nav
             display flex
             justify-content space-between
 
-        .total-balance
-            align-self center
+        .transaction-list
+            margin 32px auto 0
 
-        .transaction-list, nav
-            margin 20px auto 0
+    @media screen and (max-width: 460px)
+        .home nav
+            flex-direction column
+
+        .new-transaction-button
+            margin-top 12px
+            width 100%
+
+    @media screen and (min-width: 1200px)
+        .home
+            margin-top 200px
 </style>

@@ -1,8 +1,12 @@
 <template>
     <div class="home-transaction-list">
-        <h2 class="title">Transações</h2>
         <empty-list v-if="isListEmpty" text="Ainda não existem transações cadastradas"/>
         <div v-else class="transaction-list-container">
+            <div class="header">
+                <h3 class="type">Tipo de transação</h3>
+                <h3 class="description">Descrição</h3>
+                <h3 class="amount">Valor</h3>
+            </div>
             <home-transaction-list-item class="transaction-item" v-for="transaction in transactions" :key="transaction.id" :transaction="transaction" />
         </div>
     </div>
@@ -37,18 +41,26 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.home-transaction-list
-    background-color #fff
-    border 1px solid #e6e6e6
-    border-radius 4px
+.header
+    height 42px
+    display flex
+    justify-content space-around
+    align-items center
+    background-color #f2f2f2
+    padding-left 20px
+    padding-right 20px
 
-.title
-    text-align left
-    padding 12px 20px
-    border-bottom 1px solid #e6e6e6
+    h3
+        font-size 14px
+        font-weight bold
+        width 100%
+        color #777
+
+    h3.amount
+        text-align right
 
 .transaction-item + .transaction-item
-    border-top 1px solid #e6e6e6
+    border-top 1px solid #e2e2e2
 
 @media screen and (min-width: 1200px)
     .home-transaction-list
