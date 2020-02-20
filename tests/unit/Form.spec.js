@@ -1,11 +1,16 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import filters from '@/filters'
 import Form from '@/pages/form/Form.vue'
 
 describe('Form.vue', () => {
   let wrapper
+  const localVue = createLocalVue()
+  filters(localVue)
 
   beforeEach(() => {
-    wrapper = shallowMount(Form)
+    wrapper = shallowMount(Form, {
+		localVue
+	})
   })
 
   it('renders the description field error message ', async () => {
@@ -37,7 +42,6 @@ describe('Form.vue', () => {
   it('renders the amount value with maskered correctly ', async () => {
     const amountInput = wrapper.find('[data-amount]')
     amountInput.setValue('1009990')
-    console.log(amountInput)
     await wrapper.vm.$nextTick()
     expect(amountInput.element.value).toMatch('R$ 10.099,90')
   })
