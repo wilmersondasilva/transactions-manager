@@ -47,5 +47,5 @@ export default {
 
     @media screen and (min-width: 1200px)
         .home
-            margin-top 200px
+            margin-top 50px
 </style>
