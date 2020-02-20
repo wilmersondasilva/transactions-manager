@@ -1,7 +1,7 @@
 <template>
     <div class="total-balance">
         <span class="current-balance">Saldo atual</span>
-        <span class="amount">{{ totalBalance | toMoney }}</span>
+        <span :class="['amount', { negative: totalBalance < 0 }]">{{ totalBalance | toMoney }}</span>
     </div>
 </template>
 
@@ -32,4 +32,7 @@ export default {
         font-size 18px
         font-weight bold
         color #333
+
+    .amount.negative
+        color #f83030
 </style>

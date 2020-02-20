@@ -61,9 +61,4 @@ export default {
 
 .transaction-item + .transaction-item
     border-top 1px solid #e2e2e2
-
-@media screen and (min-width: 1200px)
-    .home-transaction-list
-        max-height 641px
-        overflow auto
 </style>
